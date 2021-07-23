@@ -14,6 +14,7 @@ export const NdefRecordType = {
 };
 
 const { ReactNativeNFC } = NativeModules;
+const eventEmitter = new NativeEventEmitter(ReactNativeNFC);
 const NFC_DISCOVERED = "__NFC_DISCOVERED";
 const NFC_ERROR = "__NFC_ERROR";
 const NFC_MISSING = "__NFC_MISSING";
@@ -22,6 +23,7 @@ const NFC_ENABLED = "__NFC_ENABLED";
 // const startUpNfcData = ReactNativeNFC.getStartUpNfcData || (() => ({}));
 
 let _enabled = true;
+let _registeredToEvents = false;
 let _listeners = {};
 let _errListeners = {};
 let _loading = true;
