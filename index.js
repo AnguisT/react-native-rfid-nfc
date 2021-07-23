@@ -1,11 +1,6 @@
 "use strict";
 
-import {
-  NativeModules,
-  NativeEventEmitter,
-  DeviceEventEmitter,
-  Platform,
-} from "react-native";
+import { NativeModules, DeviceEventEmitter, Platform } from "react-native";
 
 export const NfcDataType = {
   NDEF: "NDEF",
@@ -19,7 +14,6 @@ export const NdefRecordType = {
 };
 
 const { ReactNativeNFC } = NativeModules;
-const eventEmitter = new NativeEventEmitter(ReactNativeNFC);
 const NFC_DISCOVERED = "__NFC_DISCOVERED";
 const NFC_ERROR = "__NFC_ERROR";
 const NFC_MISSING = "__NFC_MISSING";
@@ -52,7 +46,9 @@ if (Platform.OS === "android") {
   });
 }
 
-ReactNativeNFC.isSupported();
+if (Platform.OS === "android") {
+  ReactNativeNFC.isSupported();
+}
 
 let _registerToEvents = () => {
   if (Platform.OS === "android") {
