@@ -1,6 +1,11 @@
 "use strict";
 
-import { NativeModules, DeviceEventEmitter, Platform } from "react-native";
+import {
+  NativeModules,
+  NativeEventEmitter,
+  DeviceEventEmitter,
+  Platform,
+} from "react-native";
 
 export const NfcDataType = {
   NDEF: "NDEF",
